@@ -1,0 +1,715 @@
+/* =========================
+   Design tokens
+========================= */
+
+:root {
+    --jungle-950: #0f2318;
+    --jungle-900: #14301f;
+    --jungle-800: #1c3d27;
+    --jungle-700: #26502f;
+    --jungle-600: #33643a;
+
+    --leaf-500: #5fb06c;
+    --leaf-400: #7ec987;
+    --leaf-300: #a8d9ad;
+    --leaf-200: #cdead0;
+
+    --clay-600: #a04f24;
+    --clay-500: #c1652f;
+    --clay-400: #d68350;
+
+    --parchment-100: #f4ecd8;
+    --parchment-200: #ece0c4;
+
+    --flower-500: #ff8fa3;
+    --flower-400: #ffa6b7;
+    --flower-300: #ffc9d3;
+
+    --ink: #0c1a12;
+
+    --radius-large: 28px;
+    --radius-medium: 18px;
+    --radius-small: 11px;
+
+    --shadow-deep: 0 30px 60px rgba(6, 15, 10, 0.45);
+    --shadow-soft: 0 14px 30px rgba(6, 15, 10, 0.3);
+
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Work Sans", Arial, sans-serif;
+    --font-mono: "Space Mono", "Courier New", monospace;
+}
+
+
+/* =========================
+   Base
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+
+    background: var(--jungle-950);
+    color: var(--parchment-100);
+
+    font-family: var(--font-body);
+    line-height: 1.6;
+
+    overflow-x: hidden;
+}
+
+button {
+    font: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, p, dl, dd, dt, ol {
+    margin: 0;
+    padding: 0;
+}
+
+.page {
+    position: relative;
+    z-index: 1;
+
+    width: min(100%, 720px);
+    margin: 0 auto;
+    padding: 64px 22px 40px;
+}
+
+
+/* =========================
+   Decorative jungle backdrop
+========================= */
+
+.jungle-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+
+    overflow: hidden;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 12% -6%,
+            rgba(95, 176, 108, 0.22),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 92% 8%,
+            rgba(255, 143, 163, 0.14),
+            transparent 38%
+        ),
+        var(--jungle-950);
+}
+
+.backdrop-leaf {
+    position: absolute;
+    display: block;
+
+    border-radius: 0% 60% 0% 60% / 0% 60% 0% 60%;
+    background: var(--jungle-800);
+    opacity: 0.55;
+}
+
+.leaf-a {
+    top: -60px;
+    left: -70px;
+    width: 260px;
+    height: 260px;
+    transform: rotate(25deg);
+}
+
+.leaf-b {
+    top: 8%;
+    right: -110px;
+    width: 320px;
+    height: 320px;
+    transform: rotate(-15deg);
+    background: var(--jungle-700);
+    opacity: 0.4;
+}
+
+.leaf-c {
+    bottom: -90px;
+    left: -60px;
+    width: 300px;
+    height: 300px;
+    transform: rotate(140deg);
+}
+
+.leaf-d {
+    bottom: 4%;
+    right: -80px;
+    width: 220px;
+    height: 220px;
+    transform: rotate(-60deg);
+    background: var(--jungle-700);
+    opacity: 0.45;
+}
+
+
+/* =========================
+   Screens
+========================= */
+
+.screen {
+    animation: screen-in 420ms ease both;
+}
+
+@keyframes screen-in {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   Hero / Landing
+========================= */
+
+.hero {
+    max-width: 560px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.eyebrow {
+    margin-bottom: 14px;
+
+    color: var(--leaf-300);
+
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.3rem, 7vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: var(--parchment-100);
+}
+
+.hero-copy {
+    max-width: 440px;
+    margin: 20px auto 0;
+
+    color: var(--leaf-200);
+    font-size: 1.02rem;
+}
+
+
+/* =========================
+   Mode selection cards
+========================= */
+
+.mode-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.mode-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+
+    padding: 26px 22px 24px;
+
+    border: 1px solid var(--jungle-600);
+    border-radius: var(--radius-large);
+
+    background: linear-gradient(
+        165deg,
+        var(--jungle-800),
+        var(--jungle-900)
+    );
+
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+
+    transition:
+        transform 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
+}
+
+.mode-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--leaf-500);
+    box-shadow: var(--shadow-soft);
+}
+
+.mode-card:focus-visible {
+    outline: 3px solid var(--leaf-400);
+    outline-offset: 3px;
+}
+
+.mode-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 6px;
+}
+
+.mode-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.mode-label {
+    font-family: var(--font-display);
+    font-size: 1.28rem;
+    font-weight: 600;
+    color: var(--parchment-100);
+}
+
+.mode-desc {
+    color: var(--leaf-200);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.mode-meta {
+    margin-top: 10px;
+
+    color: var(--leaf-300);
+
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+}
+
+.landing-footnote {
+    margin-top: 30px;
+
+    color: var(--leaf-300);
+    text-align: center;
+    font-size: 0.88rem;
+}
+
+
+/* =========================
+   Quiz screens
+========================= */
+
+.quiz-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    margin-bottom: 30px;
+}
+
+.back-button {
+    flex: 0 0 auto;
+
+    padding: 8px 4px;
+
+    border: none;
+    background: none;
+    color: var(--leaf-300);
+
+    font-size: 0.88rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.back-button:hover {
+    color: var(--leaf-200);
+    text-decoration: underline;
+}
+
+.vine-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    list-style: none;
+}
+
+.vine-progress li {
+    width: 11px;
+    height: 11px;
+
+    border-radius: 60% 40% 60% 40%;
+    background: var(--jungle-700);
+
+    transition: background 220ms ease, transform 220ms ease;
+}
+
+.vine-progress li.is-filled {
+    background: var(--leaf-500);
+    transform: scale(1.15);
+}
+
+.quiz-card {
+    padding: 36px 30px;
+
+    border: 1px solid var(--jungle-600);
+    border-radius: var(--radius-large);
+
+    background: linear-gradient(
+        170deg,
+        var(--jungle-800),
+        var(--jungle-900)
+    );
+
+    box-shadow: var(--shadow-soft);
+}
+
+.quiz-eyebrow {
+    margin-bottom: 10px;
+
+    color: var(--leaf-300);
+
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.quiz-question {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 4vw, 1.85rem);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--parchment-100);
+}
+
+.quiz-options {
+    display: grid;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.quiz-option {
+    padding: 16px 18px;
+
+    border: 1px solid var(--jungle-600);
+    border-radius: var(--radius-medium);
+
+    background: rgba(20, 48, 31, 0.5);
+    color: var(--parchment-100);
+
+    font-size: 1rem;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        border-color 180ms ease,
+        background 180ms ease,
+        transform 180ms ease;
+}
+
+.quiz-option:hover {
+    border-color: var(--leaf-500);
+    background: rgba(95, 176, 108, 0.14);
+    transform: translateX(4px);
+}
+
+.quiz-option:focus-visible {
+    outline: 3px solid var(--leaf-400);
+    outline-offset: 2px;
+}
+
+
+/* =========================
+   Result — nursery plant tag
+========================= */
+
+.result-wrap {
+    text-align: center;
+}
+
+.result-kicker {
+    margin-bottom: 18px;
+
+    color: var(--leaf-300);
+
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.plant-tag {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 26px;
+    align-items: center;
+
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 34px 30px 30px 40px;
+
+    border-radius: var(--radius-large);
+
+    background: var(--parchment-100);
+    color: var(--ink);
+
+    text-align: left;
+
+    box-shadow: var(--shadow-deep);
+
+    animation: tag-reveal 480ms ease both;
+}
+
+@keyframes tag-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(16px) rotate(-1.5deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(-1.5deg);
+    }
+}
+
+.plant-tag-hole {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 16px;
+    height: 16px;
+
+    border-radius: 50%;
+    background: var(--jungle-950);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.plant-tag-icon {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+.plant-tag-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.plant-tag-name {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.plant-tag-botanical {
+    margin-top: 3px;
+
+    color: var(--clay-600);
+
+    font-style: italic;
+    font-size: 0.92rem;
+}
+
+.plant-tag-tagline {
+    margin-top: 12px;
+
+    color: #3c3423;
+    font-size: 0.97rem;
+    line-height: 1.6;
+}
+
+.plant-tag-specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 16px;
+
+    margin-top: 18px;
+    padding-top: 16px;
+
+    border-top: 1px dashed rgba(12, 26, 18, 0.25);
+}
+
+.plant-tag-specs div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.spec-label {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--clay-600);
+}
+
+.spec-value {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 32px;
+}
+
+.primary-button,
+.secondary-button {
+    padding: 13px 24px;
+
+    border-radius: 999px;
+    border: none;
+
+    font-weight: 700;
+    font-size: 0.95rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+}
+
+.primary-button {
+    background: var(--leaf-500);
+    color: var(--jungle-950);
+    box-shadow: 0 10px 22px rgba(95, 176, 108, 0.28);
+}
+
+.primary-button:hover {
+    background: var(--leaf-400);
+    transform: translateY(-2px);
+}
+
+.secondary-button {
+    background: transparent;
+    border: 1px solid var(--jungle-600);
+    color: var(--parchment-100);
+}
+
+.secondary-button:hover {
+    border-color: var(--leaf-500);
+    color: var(--leaf-300);
+}
+
+.copy-button {
+    padding: 13px 20px;
+
+    border: none;
+    background: none;
+
+    color: var(--leaf-300);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: underline;
+
+    cursor: pointer;
+}
+
+.copy-button:hover {
+    color: var(--leaf-200);
+}
+
+.primary-button:focus-visible,
+.secondary-button:focus-visible,
+.copy-button:focus-visible,
+.back-button:focus-visible {
+    outline: 3px solid var(--leaf-400);
+    outline-offset: 3px;
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+.page-footer {
+    position: relative;
+    z-index: 1;
+
+    padding: 10px 22px 44px;
+
+    color: var(--jungle-600);
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 640px) {
+    .page {
+        padding: 44px 16px 30px;
+    }
+
+    .mode-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quiz-card {
+        padding: 26px 20px;
+    }
+
+    .plant-tag {
+        grid-template-columns: 1fr;
+        padding: 30px 22px 26px;
+        text-align: center;
+    }
+
+    .plant-tag-icon {
+        width: 120px;
+        margin: 0 auto;
+    }
+
+    .plant-tag-specs {
+        grid-template-columns: repeat(2, 1fr);
+        text-align: left;
+    }
+
+    .backdrop-leaf {
+        opacity: 0.3;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

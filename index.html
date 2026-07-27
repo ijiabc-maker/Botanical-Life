@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="いくつかの質問に答えるだけで、あなたにぴったりの観葉植物を診断します。お部屋タイプ診断と性格タイプ診断、2つのモードで遊べます。"
+    >
+
+    <title>Leaf Match | あなたに合う観葉植物診断</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Decorative jungle backdrop -->
+    <div class="jungle-backdrop" aria-hidden="true">
+        <span class="backdrop-leaf leaf-a"></span>
+        <span class="backdrop-leaf leaf-b"></span>
+        <span class="backdrop-leaf leaf-c"></span>
+        <span class="backdrop-leaf leaf-d"></span>
+    </div>
+
+    <main class="page">
+
+        <!-- ============ LANDING ============ -->
+        <section id="screen-landing" class="screen is-active">
+
+            <header class="hero">
+                <p class="eyebrow">Leaf Match — 観葉植物診断</p>
+
+                <h1 class="hero-title">
+                    あなたを待っている<br>
+                    植物は、きっといる。
+                </h1>
+
+                <p class="hero-copy">
+                    答えるのは数問だけ。お部屋にぴったりの一鉢か、
+                    あなたの性格を映す一鉢か。好きな診断を選んでください。
+                </p>
+            </header>
+
+            <div class="mode-grid">
+
+                <button
+                    class="mode-card mode-card--room"
+                    type="button"
+                    data-start="room"
+                >
+                    <span class="mode-icon" aria-hidden="true">
+                        <svg viewBox="0 0 100 100">
+                            <path
+                                d="M50 78 L38 78 L34 96 L66 96 L62 78 Z"
+                                fill="var(--clay-500)"
+                            />
+                            <rect
+                                x="30" y="70" width="40" height="10"
+                                rx="2" fill="var(--clay-600)"
+                            />
+                            <path
+                                d="M50 70 C 50 40, 20 40, 18 14
+                                   C 44 14, 50 40, 50 70 Z"
+                                fill="var(--leaf-500)"
+                            />
+                            <path
+                                d="M50 70 C 50 36, 80 38, 84 16
+                                   C 56 18, 50 42, 50 70 Z"
+                                fill="var(--leaf-400)"
+                            />
+                        </svg>
+                    </span>
+
+                    <span class="mode-label">お部屋タイプ診断</span>
+
+                    <span class="mode-desc">
+                        日当たりや広さ、水やりの手間から
+                        相性のいい植物を判定
+                    </span>
+
+                    <span class="mode-meta">質問 6問 · 約1分</span>
+                </button>
+
+                <button
+                    class="mode-card mode-card--personality"
+                    type="button"
+                    data-start="personality"
+                >
+                    <span class="mode-icon" aria-hidden="true">
+                        <svg viewBox="0 0 100 100">
+                            <path
+                                d="M50 78 L38 78 L34 96 L66 96 L62 78 Z"
+                                fill="var(--clay-500)"
+                            />
+                            <rect
+                                x="30" y="70" width="40" height="10"
+                                rx="2" fill="var(--clay-600)"
+                            />
+                            <circle
+                                cx="50" cy="38" r="26"
+                                fill="var(--flower-500)"
+                            />
+                            <circle
+                                cx="50" cy="38" r="10"
+                                fill="var(--flower-300)"
+                            />
+                        </svg>
+                    </span>
+
+                    <span class="mode-label">性格タイプ診断</span>
+
+                    <span class="mode-desc">
+                        いくつかの質問から、あなたの性格に
+                        重なる植物をたどっていく
+                    </span>
+
+                    <span class="mode-meta">質問 2〜3問 · 約30秒</span>
+                </button>
+
+            </div>
+
+            <p class="landing-footnote">
+                植物10種類の中から、あなたに合う一鉢を見つけます 🌿
+            </p>
+
+        </section>
+
+        <!-- ============ ROOM QUIZ ============ -->
+        <section id="screen-room-quiz" class="screen" hidden>
+
+            <div class="quiz-header">
+                <button
+                    class="back-button"
+                    type="button"
+                    data-back="landing"
+                >
+                    ← もどる
+                </button>
+
+                <ol class="vine-progress" id="room-progress"></ol>
+            </div>
+
+            <div class="quiz-card">
+                <p class="quiz-eyebrow" id="room-question-count"></p>
+                <h2 class="quiz-question" id="room-question-text"></h2>
+
+                <div class="quiz-options" id="room-options"></div>
+            </div>
+
+        </section>
+
+        <!-- ============ PERSONALITY QUIZ ============ -->
+        <section id="screen-personality-quiz" class="screen" hidden>
+
+            <div class="quiz-header">
+                <button
+                    class="back-button"
+                    type="button"
+                    data-back="landing"
+                >
+                    ← もどる
+                </button>
+
+                <ol class="vine-progress" id="personality-progress"></ol>
+            </div>
+
+            <div class="quiz-card">
+                <p class="quiz-eyebrow" id="personality-question-count"></p>
+                <h2 class="quiz-question" id="personality-question-text"></h2>
+
+                <div class="quiz-options" id="personality-options"></div>
+            </div>
+
+        </section>
+
+        <!-- ============ RESULT ============ -->
+        <section id="screen-result" class="screen" hidden>
+
+            <div class="result-wrap">
+
+                <p class="result-kicker" id="result-kicker">
+                    あなたに合う植物は
+                </p>
+
+                <div class="plant-tag" id="plant-tag">
+                    <div class="plant-tag-hole"></div>
+
+                    <div class="plant-tag-icon" id="plant-tag-icon"></div>
+
+                    <div class="plant-tag-body">
+                        <h2 class="plant-tag-name" id="plant-tag-name"></h2>
+                        <p
+                            class="plant-tag-botanical"
+                            id="plant-tag-botanical"
+                        ></p>
+
+                        <p class="plant-tag-tagline" id="plant-tag-tagline"></p>
+
+                        <dl class="plant-tag-specs" id="plant-tag-specs"></dl>
+                    </div>
+                </div>
+
+                <div class="result-actions">
+                    <button
+                        class="primary-button"
+                        type="button"
+                        id="retry-button"
+                    >
+                        もう一度診断する
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        type="button"
+                        id="other-quiz-button"
+                    ></button>
+
+                    <button
+                        class="copy-button"
+                        type="button"
+                        id="copy-button"
+                    >
+                        結果をコピーする
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="page-footer">
+        <p>Leaf Match — 植物選びのきっかけになりますように 🌱</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
