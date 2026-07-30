@@ -14,11 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 light: "日当たり◎(明るい場所)",
                 water: "土が乾いたらたっぷり",
                 humidity: "やや高め",
-                difficulty: "★★☆ 初心者〜中級"
             },
             room: {
-                light: 3, space: 3, attention: 2, humidity: 2,
-                petSafe: false, style: "wild"
+                idealLight: 2, shadeTolerance: 2, space: 3,
+                droughtTolerance: 2, humidity: 2,
+                petSafe: false, difficulty: 1, style: "wild"
             }
         },
         pothos: {
@@ -30,11 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 light: "日陰でも育つ",
                 water: "乾いたらたっぷり",
                 humidity: "特にこだわらない",
-                difficulty: "★☆☆ 超初心者向け"
             },
             room: {
-                light: 1, space: 1, attention: 1, humidity: 1,
-                petSafe: false, style: "trailing"
+                idealLight: 2, shadeTolerance: 3, space: 1,
+                droughtTolerance: 2, humidity: 1,
+                petSafe: false, difficulty: 1, style: "trailing"
             }
         },
         ficus: {
@@ -46,11 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 light: "日当たり◎(明るい場所)",
                 water: "土の表面が乾いたら",
                 humidity: "普通",
-                difficulty: "★★★ やや気難しい"
             },
             room: {
-                light: 3, space: 3, attention: 3, humidity: 2,
-                petSafe: false, style: "chic"
+                idealLight: 3, shadeTolerance: 1, space: 3,
+                droughtTolerance: 2, humidity: 2,
+                petSafe: false, difficulty: 2, style: "chic"
             }
         },
         sansevieria: {
@@ -62,27 +62,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 light: "日陰でもOK",
                 water: "月1〜2回でも大丈夫",
                 humidity: "乾燥に強い",
-                difficulty: "★☆☆ 超初心者向け"
             },
             room: {
-                light: 1, space: 2, attention: 1, humidity: 1,
-                petSafe: false, style: "unique"
+                idealLight: 2, shadeTolerance: 3, space: 2,
+                droughtTolerance: 3, humidity: 1,
+                petSafe: false, difficulty: 1, style: "unique"
             }
         },
         "string-of-pearls": {
             name: "グリーンネックレス",
             botanical: "Senecio rowleyanus",
             tagline:
-                "丸い葉がネックレスのように連なる、見た目からして個性派。",
+                "丸い葉がネックレスのように連なる、見た目からして個性派。" +
+                "(ペットや小さなお子さんがいる場合は置き場所に注意)",
             specs: {
                 light: "日当たり◎(明るい場所)",
                 water: "乾かし気味に",
                 humidity: "乾燥気味が好き",
-                difficulty: "★★☆ 初心者〜中級"
             },
             room: {
-                light: 3, space: 1, attention: 2, humidity: 1,
-                petSafe: false, style: "unique"
+                idealLight: 3, shadeTolerance: 1, space: 1,
+                droughtTolerance: 3, humidity: 1,
+                // petSafe is false out of caution — mildly irritant,
+                // not high-toxicity, but treated as "not pet-safe"
+                // for scoring purposes.
+                petSafe: false, difficulty: 2, style: "unique"
             }
         },
         zz: {
@@ -94,11 +98,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 light: "日陰でも育つ",
                 water: "乾いてからでOK",
                 humidity: "特にこだわらない",
-                difficulty: "★☆☆ 超初心者向け"
             },
             room: {
-                light: 1, space: 2, attention: 1, humidity: 1,
-                petSafe: false, style: "unique"
+                idealLight: 2, shadeTolerance: 3, space: 2,
+                droughtTolerance: 3, humidity: 1,
+                petSafe: false, difficulty: 1, style: "unique"
             }
         },
         calathea: {
@@ -110,11 +114,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 light: "明るい日陰",
                 water: "土が乾く前に",
                 humidity: "高め(こまめな霧吹きを)",
-                difficulty: "★★★ やや気難しい"
             },
             room: {
-                light: 2, space: 2, attention: 3, humidity: 3,
-                petSafe: true, style: "chic"
+                idealLight: 2, shadeTolerance: 1, space: 2,
+                droughtTolerance: 1, humidity: 3,
+                petSafe: true, difficulty: 3, style: "chic"
             }
         },
         "air-plant": {
@@ -126,11 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 light: "レースカーテン越し",
                 water: "週2〜3回の霧吹き",
                 humidity: "高めが好き",
-                difficulty: "★★☆ 初心者〜中級"
             },
             room: {
-                light: 2, space: 1, attention: 2, humidity: 3,
-                petSafe: true, style: "unique"
+                idealLight: 2, shadeTolerance: 2, space: 1,
+                droughtTolerance: 2, humidity: 2,
+                petSafe: true, difficulty: 2, style: "unique"
             }
         },
         "rubber-tree": {
@@ -142,11 +146,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 light: "日当たり◎(明るい場所)",
                 water: "土が乾いたらたっぷり",
                 humidity: "普通",
-                difficulty: "★☆☆ 初心者向け"
             },
             room: {
-                light: 2, space: 3, attention: 1, humidity: 2,
-                petSafe: false, style: "chic"
+                idealLight: 3, shadeTolerance: 2, space: 3,
+                droughtTolerance: 2, humidity: 2,
+                petSafe: false, difficulty: 2, style: "chic"
             }
         },
         "boston-fern": {
@@ -158,11 +162,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 light: "明るい日陰",
                 water: "土を乾かさないように",
                 humidity: "高め",
-                difficulty: "★★★ やや気難しい"
             },
             room: {
-                light: 2, space: 2, attention: 3, humidity: 3,
-                petSafe: true, style: "wild"
+                idealLight: 2, shadeTolerance: 1, space: 2,
+                droughtTolerance: 1, humidity: 3,
+                petSafe: true, difficulty: 3, style: "wild"
             }
         }
     };
@@ -365,6 +369,48 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     ];
 
+    /**
+     * Light score blends two things:
+     * - closeness to the plant's ideal light level
+     * - a bonus/penalty from shade tolerance, but only in dim-ish
+     *   rooms (where tolerance actually matters). In bright rooms,
+     *   shade tolerance is irrelevant, so it's not applied.
+     */
+    function lightScore(room, userLight) {
+        const closeness = 2 - Math.abs(room.idealLight - userLight);
+
+        if (userLight <= 2) {
+            const toleranceBonus = room.shadeTolerance - 2; // -1..+1
+            return closeness + toleranceBonus * 0.5;
+        }
+
+        return closeness;
+    }
+
+    /**
+     * Care score combines two separate concerns from one answer
+     * (how attentive the person can be, 1=forgetful..3=daily):
+     * - drought tolerance: only matters if the person is forgetful.
+     *   A plant that tolerates neglect is never a bad pick, so no
+     *   penalty for "more tolerance than needed" — only a penalty
+     *   for falling short of what's needed.
+     * - difficulty: the plant's overall fussiness shouldn't exceed
+     *   what the person is willing to commit to; same shortfall-only
+     *   logic.
+     */
+    function careScore(room, userAttention) {
+        const neededDrought = 4 - userAttention;
+        const droughtShortfall =
+            Math.max(0, neededDrought - room.droughtTolerance);
+
+        const difficultyShortfall =
+            Math.max(0, room.difficulty - userAttention);
+
+        return (
+            (2 - droughtShortfall) + (2 - difficultyShortfall)
+        ) / 2;
+    }
+
     function scoreRoomAnswers(answers) {
         let bestScore = -Infinity;
         let bestIds = [];
@@ -374,17 +420,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let score = 0;
 
-            score += 2 - Math.abs(room.light - answers.light);
+            score += lightScore(room, answers.light);
             score += 2 - Math.abs(room.space - answers.space);
-            score += 2 - Math.abs(room.attention - answers.attention);
+            score += careScore(room, answers.attention);
             score += 2 - Math.abs(room.humidity - answers.humidity);
 
             if (answers.pet) {
                 score += room.petSafe ? 3 : -2;
             }
 
+            // Aesthetic preference is a smaller bonus on top of the
+            // environmental/care fit above, not a primary factor.
             if (room.style === answers.style) {
-                score += 3;
+                score += 2;
             }
 
             if (score > bestScore) {
@@ -679,6 +727,18 @@ document.addEventListener("DOMContentLoaded", () => {
        Result screen
     ========================================================= */
 
+    function difficultyLabel(level) {
+        if (level === 1) {
+            return "★☆☆ 初心者向け";
+        }
+
+        if (level === 2) {
+            return "★★☆ 初心者〜中級";
+        }
+
+        return "★★★ やや気難しい";
+    }
+
     function showResult(plantId, quizType) {
         const plant = PLANTS[plantId];
 
@@ -700,7 +760,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ["日当たり", plant.specs.light],
             ["水やり", plant.specs.water],
             ["湿度", plant.specs.humidity],
-            ["難易度", plant.specs.difficulty]
+            ["難易度", difficultyLabel(plant.room.difficulty)]
         ];
 
         specEntries.forEach(([label, value]) => {
