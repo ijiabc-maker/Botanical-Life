@@ -168,6 +168,108 @@ document.addEventListener("DOMContentLoaded", () => {
                 droughtTolerance: 1, humidity: 3,
                 petSafe: true, difficulty: 3, style: "wild"
             }
+        },
+        gajumaru: {
+            name: "ガジュマル",
+            botanical: "Ficus microcarpa",
+            tagline:
+                "沖縄では「幸せを呼ぶ木」として親しまれる、太い幹と" +
+                "うねる気根が印象的な一鉢。",
+            specs: {
+                light: "日当たり普通〜◎",
+                water: "土が乾いたらたっぷり",
+                humidity: "普通",
+            },
+            room: {
+                idealLight: 2, shadeTolerance: 2, space: 2,
+                droughtTolerance: 2, humidity: 2,
+                petSafe: false, difficulty: 1, style: "unique"
+            }
+        },
+        flytrap: {
+            name: "ハエトリソウ",
+            botanical: "Dionaea muscipula",
+            tagline:
+                "虫を捕らえる不思議な仕組みを持つ、話のタネになること" +
+                "間違いなしの食虫植物。",
+            specs: {
+                light: "日当たり◎(直射日光もOK)",
+                water: "腰水でいつも湿らせて",
+                humidity: "高め",
+            },
+            room: {
+                idealLight: 3, shadeTolerance: 1, space: 1,
+                droughtTolerance: 1, humidity: 3,
+                petSafe: true, difficulty: 3, style: "unique"
+            }
+        },
+        peperomia: {
+            name: "ペペロミア",
+            botanical: "Peperomia spp.",
+            tagline:
+                "小ぶりでぷっくりした葉がかわいい、デスクや棚に" +
+                "ちょこんと置きたい存在。",
+            specs: {
+                light: "レースカーテン越し〜明るい日陰",
+                water: "土が乾いたら",
+                humidity: "普通",
+            },
+            room: {
+                idealLight: 2, shadeTolerance: 2, space: 1,
+                droughtTolerance: 2, humidity: 2,
+                petSafe: true, difficulty: 1, style: "unique"
+            }
+        },
+        aglaonema: {
+            name: "アグラオネマ",
+            botanical: "Aglaonema spp.",
+            tagline:
+                "ピンクや白の模様が入る葉が華やか。日陰に強く、" +
+                "オフィスでも人気の実力派。",
+            specs: {
+                light: "日陰でも育つ",
+                water: "土が乾いたらたっぷり",
+                humidity: "普通",
+            },
+            room: {
+                idealLight: 1, shadeTolerance: 3, space: 2,
+                droughtTolerance: 2, humidity: 2,
+                petSafe: false, difficulty: 1, style: "chic"
+            }
+        },
+        coffee: {
+            name: "コーヒーの木",
+            botanical: "Coffea arabica",
+            tagline:
+                "つやのある葉と、いつか実がなるかもしれない楽しみを" +
+                "持つ一本。",
+            specs: {
+                light: "日当たり◎(明るい場所)",
+                water: "土の表面が乾いたら",
+                humidity: "普通",
+            },
+            room: {
+                idealLight: 3, shadeTolerance: 2, space: 2,
+                droughtTolerance: 2, humidity: 2,
+                petSafe: false, difficulty: 2, style: "chic"
+            }
+        },
+        cactus: {
+            name: "サボテン",
+            botanical: "Cactaceae spp.",
+            tagline:
+                "水やりを忘れるくらいがちょうどいい、究極のマイペース派。" +
+                "とにかく丈夫。(棘があるので置き場所には注意)",
+            specs: {
+                light: "日当たり◎(直射日光OK)",
+                water: "月1回、乾かし気味に",
+                humidity: "乾燥に強い",
+            },
+            room: {
+                idealLight: 3, shadeTolerance: 1, space: 1,
+                droughtTolerance: 3, humidity: 1,
+                petSafe: true, difficulty: 1, style: "unique"
+            }
         }
     };
 
@@ -303,6 +405,81 @@ document.addEventListener("DOMContentLoaded", () => {
                     <path d="M50 92 C50 60 50 30 50 6"/>
                     <path d="M50 92 C51 62 55 34 66 10"/>
                     <path d="M50 92 C52 65 60 40 78 18"/>
+                </g>
+            </svg>`,
+        gajumaru: `
+            <svg viewBox="0 0 100 100">
+                <ellipse cx="50" cy="30" rx="30" ry="24" fill="#3f7a4a"/>
+                <path d="M35 50 C30 65 32 80 30 92 M50 50 L50 92
+                         M65 50 C70 65 68 80 70 92"
+                      stroke="#8a5a34" stroke-width="4" fill="none"
+                      stroke-linecap="round"/>
+                <ellipse cx="50" cy="50" rx="15" ry="10" fill="#8a5a34"/>
+            </svg>`,
+        flytrap: `
+            <svg viewBox="0 0 100 100">
+                <g stroke="#3f7a4a" stroke-width="3">
+                    <line x1="35" y1="92" x2="40" y2="55"/>
+                    <line x1="65" y1="92" x2="60" y2="55"/>
+                    <line x1="50" y1="92" x2="50" y2="50"/>
+                </g>
+                <path d="M40 55 C30 40 30 20 40 10 C42 25 45 40 50 50
+                         C55 40 58 25 60 10 C70 20 70 40 60 55
+                         C55 60 45 60 40 55 Z"
+                      fill="#5fa768"/>
+                <g stroke="#c1652f" stroke-width="1.5" opacity="0.6">
+                    <line x1="40" y1="13" x2="60" y2="13"/>
+                    <line x1="42" y1="19" x2="58" y2="19"/>
+                    <line x1="44" y1="25" x2="56" y2="25"/>
+                </g>
+            </svg>`,
+        peperomia: `
+            <svg viewBox="0 0 100 100">
+                <g fill="#4c8a56">
+                    <ellipse cx="35" cy="40" rx="14" ry="16"/>
+                    <ellipse cx="65" cy="38" rx="14" ry="16"/>
+                    <ellipse cx="50" cy="60" rx="15" ry="17"/>
+                    <ellipse cx="30" cy="66" rx="12" ry="14"/>
+                    <ellipse cx="70" cy="66" rx="12" ry="14"/>
+                </g>
+            </svg>`,
+        aglaonema: `
+            <svg viewBox="0 0 100 100">
+                <path d="M50 10 C28 20 22 48 32 72 C38 86 45 93 50 95
+                         C55 93 62 86 68 72 C78 48 72 20 50 10 Z"
+                      fill="#3d7248"/>
+                <path d="M50 24 C44 40 44 60 50 84"
+                      stroke="#ffc9d3" stroke-width="6" fill="none"
+                      opacity="0.85"/>
+            </svg>`,
+        coffee: `
+            <svg viewBox="0 0 100 100">
+                <path d="M50 8 C30 18 22 45 32 68 C38 84 45 92 50 94
+                         C55 92 62 84 68 68 C78 45 70 18 50 8 Z"
+                      fill="#2e5c39"/>
+                <line x1="50" y1="20" x2="50" y2="88"
+                      stroke="#a8d9ad" stroke-width="2" opacity="0.6"/>
+                <circle cx="38" cy="55" r="5" fill="#c1652f"/>
+                <circle cx="62" cy="60" r="5" fill="#a04f24"/>
+            </svg>`,
+        cactus: `
+            <svg viewBox="0 0 100 100">
+                <path d="M40 92 L40 40 C40 25 60 25 60 40 L60 92 Z"
+                      fill="#4c8a56"/>
+                <path d="M40 55 C25 55 25 40 35 38"
+                      stroke="#4c8a56" stroke-width="10" fill="none"
+                      stroke-linecap="round"/>
+                <path d="M60 65 C75 65 75 50 65 48"
+                      stroke="#4c8a56" stroke-width="10" fill="none"
+                      stroke-linecap="round"/>
+                <circle cx="50" cy="26" r="8" fill="#ff8fa3"/>
+                <g stroke="#f4ecd8" stroke-width="1.5" opacity="0.6">
+                    <line x1="44" y1="45" x2="41" y2="45"/>
+                    <line x1="56" y1="45" x2="59" y2="45"/>
+                    <line x1="44" y1="60" x2="41" y2="60"/>
+                    <line x1="56" y1="60" x2="59" y2="60"/>
+                    <line x1="44" y1="75" x2="41" y2="75"/>
+                    <line x1="56" y1="75" x2="59" y2="75"/>
                 </g>
             </svg>`
     };
@@ -457,18 +634,30 @@ document.addEventListener("DOMContentLoaded", () => {
             q1: {
                 text: "週末の理想の過ごし方は?",
                 options: [
-                    { label: "一人でのんびり読書や映画", next: "q2x" },
-                    { label: "友達を呼んでワイワイ過ごす", next: "q2y" }
+                    { label: "一人でのんびり読書や映画", next: "q2-calm" },
+                    { label: "友達を呼んでワイワイ過ごす", next: "q2-social" },
+                    {
+                        label: "外に出て体を動かす、自然に触れる",
+                        next: "q2-active"
+                    }
                 ]
             },
-            q2x: {
+
+            /* ---- calm branch (6 leaves) ---- */
+            "q2-calm": {
                 text: "人からよく言われる性格は?",
                 options: [
-                    { label: "落ち着いている、マイペース", next: "q3xa" },
-                    { label: "繊細で気配り上手", next: "q3xb" }
+                    {
+                        label: "落ち着いている、マイペース",
+                        next: "q3-calm-a"
+                    },
+                    {
+                        label: "繊細で自分の時間を大切にする",
+                        next: "q3-calm-b"
+                    }
                 ]
             },
-            q3xa: {
+            "q3-calm-a": {
                 text: "新しいことに挑戦するのは得意?",
                 options: [
                     {
@@ -485,8 +674,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 ]
             },
-            q3xb: {
-                text: "疲れた時、どう過ごす?",
+            "q3-calm-b": {
+                text: "自分の時間、どう過ごしたい?",
                 options: [
                     {
                         label: "静かな場所で一人になりたい",
@@ -495,24 +684,40 @@ document.addEventListener("DOMContentLoaded", () => {
                     {
                         label: "誰かに話を聞いてもらいたい",
                         result: "air-plant"
+                    },
+                    {
+                        label: "小さな趣味にじっくり没頭する",
+                        result: "peperomia"
                     }
                 ]
             },
-            q2y: {
+
+            /* ---- social branch (6 leaves) ---- */
+            "q2-social": {
                 text: "グループの中での自分のポジションは?",
                 options: [
-                    { label: "盛り上げ役、目立つタイプ", next: "q3ya" },
-                    { label: "みんなをまとめるサポート役", next: "q3yb" }
+                    {
+                        label: "盛り上げ役、目立つタイプ",
+                        next: "q3-social-a"
+                    },
+                    {
+                        label: "みんなをまとめるサポート役",
+                        next: "q3-social-b"
+                    }
                 ]
             },
-            q3ya: {
+            "q3-social-a": {
                 text: "自分を色にたとえると?",
                 options: [
                     { label: "鮮やかで目立つ色", result: "monstera" },
-                    { label: "さわやかで凛とした色", result: "ficus" }
+                    { label: "さわやかで凛とした色", result: "ficus" },
+                    {
+                        label: "華やかで柔らかい色",
+                        result: "boston-fern"
+                    }
                 ]
             },
-            q3yb: {
+            "q3-social-b": {
                 text: "チームで大事にしていることは?",
                 options: [
                     { label: "柔軟に対応すること", result: "pothos" },
@@ -521,8 +726,49 @@ document.addEventListener("DOMContentLoaded", () => {
                         result: "rubber-tree"
                     },
                     {
-                        label: "場を華やかにすること",
-                        result: "boston-fern"
+                        label: "目立たなくても頼られる存在でいること",
+                        result: "aglaonema"
+                    }
+                ]
+            },
+
+            /* ---- active branch (4 leaves) ---- */
+            "q2-active": {
+                text: "自然の中でどう過ごしたい?",
+                options: [
+                    {
+                        label: "多少ハードでも力強く楽しみたい",
+                        next: "q3-active-a"
+                    },
+                    {
+                        label: "自分のこだわりをじっくり追求したい",
+                        next: "q3-active-b"
+                    }
+                ]
+            },
+            "q3-active-a": {
+                text: "困難な状況でも、どう振る舞う?",
+                options: [
+                    {
+                        label: "たくましく乗り越える",
+                        result: "gajumaru"
+                    },
+                    {
+                        label: "マイペースにやり過ごす",
+                        result: "cactus"
+                    }
+                ]
+            },
+            "q3-active-b": {
+                text: "好きなことへの向き合い方は?",
+                options: [
+                    {
+                        label: "とことん探求する",
+                        result: "coffee"
+                    },
+                    {
+                        label: "人と違う視点で楽しむ",
+                        result: "flytrap"
                     }
                 ]
             }
